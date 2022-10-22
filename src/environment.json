@@ -1,0 +1,8 @@
+{
+   "PORT": 3000,
+   "PORT_HTTPS": 3001,
+   "SECRET_KEY": "ABC123",
+   "REFRESH_SECRET_KEY": "XYZ456",
+   "EXPIRES_IN": 86400,
+   "PAGE_SIZE": 5
+}
