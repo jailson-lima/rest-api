@@ -19,12 +19,18 @@ export const env = load(path.resolve(__dirname + "/environment.json"))
 
 // Encode string UTF-16 in string base64.
 export const encode64 = string => {
-   return btoa(unescape(encodeURIComponent(string)))
+   let encoder = new TextEncoder()
+   let data = encoder.encode(string)
+   let plain = String.fromCharCode.apply(null, new Uint8Array(data))
+   return btoa(plain)
 }
 
 // Decode string base64 in string UTF-16.
 export const decode64 = string => {
-   return decodeURIComponent(escape(atob(string)))
+   let plain = atob(string)
+   let data = Uint8Array.from(plain, character => character.charCodeAt(0))
+   let decoder = new TextDecoder()
+   return decoder.decode(data)
 }
 
 // Decode token.
